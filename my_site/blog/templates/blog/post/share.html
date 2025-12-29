@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Share post {% endblock %}
+
+{% block content %}
+    {% if sent %}
+    <h1> Email enviado exitosamente </h1>
+    <p> 
+        {{post.title}} enviado exitosamente a {{form.cleaned_data.to}}
+    </p>
+    {% else %}
+    <h1>Compartir {{post.title}} </h1>
+    <form method="post">
+        {{form.as_p}}
+        {% csrf_token %}
+        <input type="submit" value="Enviar datos">
+    </form>
+    {% endif %}
+    <a href="{{post.get_absolute_url}}">Regresar</a>
+{% endblock %}

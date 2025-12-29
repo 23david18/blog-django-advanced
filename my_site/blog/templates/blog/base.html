@@ -1,0 +1,24 @@
+{% load blog_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link href="{% static "style.css" %}" rel="stylesheet">
+</head>
+<body>
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div id="sidebar">
+    <h2>My blog</h2>
+    <p>This is my blog.
+      Yo he escrito {% total_posts %} post
+    </p>
+    <h3>Publicaciones recientes</h3>
+    {% show_latest_posts 3 %}
+    <a href="{% url 'blog:post_list' %}">Inicio</a>
+  </div>
+</body>
+</html>
